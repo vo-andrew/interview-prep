@@ -37,5 +37,5 @@ def givenSolution(arr):
 arr = [3, 4, -1, 1]
 print(givenSolution(arr))
         
-# Time Complexity: O(N) because we iterate throguh the entire input array in our segregate function and find missing function.
+# Time Complexity: O(N) because we iterate through the entire input array in our segregate function and find missing function.
 # Space Complexity: O(1) because we only modify the input array.
