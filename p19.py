@@ -1,0 +1,59 @@
+"""
+A builder is looking to build a row of N houses that can be of K different colors. He has a goal of minimizing cost while ensuring that no two neighboring houses are of the same color.
+
+Given an N by K matrix where the nth row and kth column represents the cost to build the nth house with kth color, return the minimum cost which achieves this goal.
+"""
+
+import sys
+
+
+def get_minimum_painting_cost(cost_matrix, num_houses, num_colors):
+    if not cost_matrix:
+        return 0
+
+    prev_house_min = 0
+    prev_house_min_index = -1
+    prev_house_second_min = 0
+
+    for i in range(num_houses):
+        curr_house_min = sys.maxsize
+        curr_house_second_min = sys.maxsize
+        curr_house_min_index = 0
+
+        for j in range(num_colors):
+            if prev_house_min_index == j:
+                cost_matrix[i][j] += prev_house_second_min
+            else:
+                cost_matrix[i][j] += prev_house_min
+
+            if curr_house_min > cost_matrix[i][j]:
+                curr_house_second_min = curr_house_min
+                curr_house_min = cost_matrix[i][j]
+                curr_house_min_index = j
+            elif curr_house_second_min > cost_matrix[i][j]:
+                curr_house_second_min = cost_matrix[i][j]
+
+        prev_house_min = curr_house_min
+        prev_house_second_min = curr_house_second_min
+        prev_house_min_index = curr_house_min_index
+
+    return min(cost_matrix[num_houses - 1])
+
+
+cost_matrix = \
+    [[7, 3, 8, 6, 1, 2],
+     [5, 6, 7, 2, 4, 3],
+     [10, 1, 4, 9, 7, 6]]
+assert get_minimum_painting_cost(cost_matrix,
+                                 len(cost_matrix), len(cost_matrix[0])) == 4
+
+cost_matrix = \
+    [[7, 3, 8, 6, 1, 2],
+     [5, 6, 7, 2, 4, 3],
+     [10, 1, 4, 9, 7, 6],
+     [10, 1, 4, 9, 7, 6]]
+assert get_minimum_painting_cost(cost_matrix,
+                                 len(cost_matrix), len(cost_matrix[0])) == 8
+
+# Time Complexity: O(N^2) because we have to traverse the input matrix.
+# Space Complexity: O(1) because we do not allocate any extra memory besides the input matrix.
