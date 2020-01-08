@@ -49,4 +49,4 @@ print(delete_duplicates(arr))
 print(arr)
 
 # Time Complexity: O(N) because we have reduced the number of shifts needed when writing over duplicate values.
-# Space Complexoty: O(1) because we do not allocate any extra memory.
+# Space Complexity: O(1) because we do not allocate any extra memory.
