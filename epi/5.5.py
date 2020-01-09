@@ -11,7 +11,7 @@ len = 6
 duplicate = 3
 [2,3,5,7,11,13,13,13,13]
 """
-def mySolution(arr):
+def my_solution(arr):
     if arr is None or len(arr) < 2:
        return 0 
     window = len(arr)
@@ -28,11 +28,11 @@ def mySolution(arr):
     return len(arr) - duplicates
             
 arr = [2,3,5,5,7,11,11,11,13]
-print(mySolution(arr))
+print(my_solution(arr))
 print(arr)
 
 # Time Complexity: O(N^2) because the number of shifts we have to do is (n - 1) + (n - 2) + ... + 2 + 1.
-# Space Complexoty: O(1) because we do not allocate any extra memory.
+# Space Complexity: O(1) because we do not allocate any extra memory.
 
 def delete_duplicates(A):
     if not A:
