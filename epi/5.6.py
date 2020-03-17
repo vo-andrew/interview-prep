@@ -3,7 +3,7 @@ Buy And Sell A Stock Once
 Input:
     An input array that represents stock prices over a period of days.
 Output:
-    The maximum profits achieveable by buying then sellling one stock.
+    The maximum profits achieveable by buying then selling one stock.
 """
 
 def solution(A):
